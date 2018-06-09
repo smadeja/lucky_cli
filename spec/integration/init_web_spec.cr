@@ -14,8 +14,14 @@ describe "Initializing a new web project" do
 
   it "symlinks and compiles static assets correctly" do
     should_run_successfully "crystal src/lucky.cr init test-project"
-    FileUtils.cp("spec/support/cat.gif", "test-project/static/assets/images/cat.gif")
-    File.exists?("test-project/public/assets/images/cat.gif").should be_true
+    FileUtils.cp("spec/support/cat.gif", "test-project/static/assets/images/")
+    # Dir.new("test-project/static/assets/images").each do |file|
+    #   p file
+    # end
+    # Dir.new("test-project/public/assets/images").each do |file|
+    #   p file
+    # end
+    File.file?("test-project/public/assets/images/cat.gif").should be_true
 
     FileUtils.cd "test-project" do
       should_run_successfully "yarn install"
