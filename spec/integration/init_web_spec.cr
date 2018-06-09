@@ -12,7 +12,7 @@ describe "Initializing a new web project" do
     File.read("test-project/.travis.yml").should contain "postgresql"
   end
 
-  it "symlinks and compiles static assets correctly" do
+  it "compiles static assets correctly" do
     should_run_successfully "crystal src/lucky.cr init test-project"
     FileUtils.cp("spec/support/cat.gif", "test-project/public/images/")
     FileUtils.cd "test-project" do
