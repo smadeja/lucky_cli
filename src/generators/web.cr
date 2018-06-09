@@ -48,9 +48,6 @@ class LuckyCli::Generators::Web
     add_default_lucky_structure_to_src
     if browser?
       add_browser_app_structure_to_src
-      within_project do
-        File.symlink("static/assets", "public/assets")
-      end
     end
     setup_gitignore
     remove_default_license
